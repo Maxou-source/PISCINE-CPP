@@ -1,0 +1,34 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mparisse <mparisse@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/03/09 16:03:57 by mparisse          #+#    #+#              #
+#    Updated: 2023/05/10 22:07:14 by mparisse         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+SRCS = megaphone.cpp
+
+NAME = megaphone
+
+OBJS = $(SRCS:.cpp=.o)
+
+CFLAGS = -Wall -Wextra -Werror -std=c++98
+
+all: $(NAME)
+
+$(NAME) : $(OBJS)
+	c++ $(CFLAGS) $(OBJS) -o $(NAME)
+	
+clean:
+	rm -rf $(OBJS)
+
+fclean: clean
+	rm -rf $(NAME)
+
+re: fclean all
+
+.PHONY: all fclean clean re
