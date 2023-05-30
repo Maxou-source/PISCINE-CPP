@@ -21,9 +21,18 @@ $$ | \_/ $$ |\$$$$$$$ |$$  /\$$\ \$$$$$$  |\$$$$$$  |
 Ice::Ice(void)
 {
     std::cout << "Ice construcor called" << std::endl;
-    _type = "default";
+    _type = "ice";
+}
+
+
+/*======== GETTERS ========*/
+
+std::string const & AMateria::getType() const
+{
+    return (_type);
 }
 
 /*===============================*/
+
 
 /*=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+*/

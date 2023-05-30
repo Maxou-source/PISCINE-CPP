@@ -47,8 +47,10 @@ class Cat : public Animal
         /*=== Destructors ===*/
         ~Cat();
 
+        /*=== Setters && Getters ===*/
         Brain  *getBrain(void) const;
         void   setIdea(std::string, int);
+
         /*=== Member Function ===*/
         void    makeSound(void) const;
     private:

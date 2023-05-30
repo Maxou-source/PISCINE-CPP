@@ -9,36 +9,39 @@ $$ | \_/ $$ |\$$$$$$$ |$$  /\$$\ \$$$$$$  |\$$$$$$  |
 \__|     \__| \_______|\__/  \__| \______/  \______/
 
  * @ Author: Maxou
- * @ Create Time: 2023-05-29 01:10:22
+ * @ Create Time: 1970-01-01 01:00:00
  */
 
-#pragma once
+#include "AMateria.hpp"
 
-#include <iostream>
-#include <string>
-#include "Characters.hpp"
-
-class AMateria
+class IMateriaSource
 {
     protected:
-        std::string _type;
+        Materia *_data;
+
     public:
     /*=== Constructors ===*/
-        AMateria();
-        AMateria(const &AMateria);
-
-        AMateria(std::string const & type);
-
-        AMateria& operator=(const AMateria &);
-
+        IMateriaSource();
+        IMateriaSource(const IMateriaSource&);
+    
     /*=== Destructors ===*/
-        ~AMateria();
+        virtual ~IMateriaSource() {}
 
-    /*=== Getters ===*/
-        std::string const & getType() const;
-        
     /*=== Member Functions ===*/
-        virtual AMateria* clone() const = 0;
-        virtual void use(ICharacter& target);
+        virtual void learnMateria(AMateria*) = 0;
+        virtual AMateria* createMateria(std::string const & type) = 0;
 };
 
+/*
+canonical:
+-copy
+-default
+-assignement operator
+-destructor
+*/
+
+class MateriaSource : public IMateriaSource
+{
+    public:
+        ;
+};
