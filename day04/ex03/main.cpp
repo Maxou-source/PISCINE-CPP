@@ -17,5 +17,7 @@ $$ | \_/ $$ |\$$$$$$$ |$$  /\$$\ \$$$$$$  |\$$$$$$  |
 
 int main()
 {
-    std::cout << "ca compile" << std::endl;
+    AMateria *icee = new Ice;
+
+    (void) icee;    
 }

@@ -25,6 +25,7 @@ copy
 operator =
 destructor
 */
+class ICharacter;
 
 class Ice : public AMateria
 {
@@ -40,6 +41,7 @@ class Ice : public AMateria
         ~Ice();
 
         /*=== From Base Class ===*/
+        virtual AMateria* clone() const;
         void use(ICharacter& target);
         std::string const & getType() const;
 };
@@ -56,6 +58,7 @@ class Cure : public AMateria
         ~Cure();
         
         /*=== From Base Class ===*/
+        virtual AMateria* clone() const;
         void use(ICharacter& target);
         std::string const & getType() const;
 };

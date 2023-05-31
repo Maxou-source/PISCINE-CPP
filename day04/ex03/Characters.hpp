@@ -18,14 +18,12 @@ $$ | \_/ $$ |\$$$$$$$ |$$  /\$$\ \$$$$$$  |\$$$$$$  |
 #include <iostream>
 #include <string>
 
-#include "AMateria.hpp"
-
 class AMateria;
 
 class ICharacter
 {
     public:
-        virtual ~ICharacter();
+        virtual ~ICharacter() {}
         virtual std::string const & getName() const = 0;
         virtual void equip(AMateria* m) = 0;
         virtual void unequip(int idx) = 0;
@@ -41,7 +39,10 @@ class Character : public ICharacter
         Character(const Character&);
 
     /*=== Destructors ===*/
-        ~Character();
+        ~Character() {};
+
+    /*=== Getters and Setters ===*/
+        std::string const & getName(void) const;
 
     /*=== Member Functions ===*/
         void    equip(AMateria* m);
@@ -52,8 +53,6 @@ class Character : public ICharacter
         AMateria    *inventory[4];
         int         idx;
         std::string _name;
-
-        
 };
 
 #endif

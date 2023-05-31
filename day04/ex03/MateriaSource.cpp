@@ -16,23 +16,23 @@ $$ | \_/ $$ |\$$$$$$$ |$$  /\$$\ \$$$$$$  |\$$$$$$  |
 
 /*=+=+=+=+=+=+=+=+=+=+=+=+ INTERFACE =+=+=+=+=+=+=+=+=+=+=+=+*/
 
-IMateriaSource::IMateriaSource(void)
-{
-    std::cout << "Interface Materia Source constructor called" << std::endl;
-    _data = NULL;
-}
+// IMateriaSource::IMateriaSource(void)
+// {
+//     std::cout << "Interface Materia Source constructor called" << std::endl;
+//     _data = NULL;
+// }
 
-IMateriaSource::IMateriaSource(const IMateriaSource& rhs)
-{
-    std::cout << "Interface Materia Source copy constructor called" << std::endl;
-}
+// IMateriaSource::IMateriaSource(const IMateriaSource& rhs)
+// {
+//     std::cout << "Interface Materia Source copy constructor called" << std::endl;
+// }
 
-/*=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+*/
+// /*=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+*/
 
 
-/*=+=+=+=+=+=+=+=+=+=+=+=+ MATERIA SOURCE =+=+=+=+=+=+=+=+=+=+=+=+*/
+// /*=+=+=+=+=+=+=+=+=+=+=+=+ MATERIA SOURCE =+=+=+=+=+=+=+=+=+=+=+=+*/
 
-MateriaSource::MateriaSource()
+// MateriaSource::MateriaSource()
 
 
 /*=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+*/

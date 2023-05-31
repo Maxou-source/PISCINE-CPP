@@ -13,6 +13,7 @@ $$ | \_/ $$ |\$$$$$$$ |$$  /\$$\ \$$$$$$  |\$$$$$$  |
  */
 
 #include "IceAndCure.hpp"
+#include "Characters.hpp"
 
 /*=+=+=+=+=+=+=+=+=+=+=+=+ ICE =+=+=+=+=+=+=+=+=+=+=+=+*/
 
@@ -28,14 +29,34 @@ Ice::Ice(const Ice& rhs) : AMateria(rhs)
 {
     std::cout << "ICE copy constructor called" << std::endl;
 }
+
+Ice::~Ice() {}
 /*===============================*/
 
 /*======== GETTERS ========*/
 std::string const & Ice::getType() const { return AMateria::getType(); }
 /*===============================*/
 
+/*======== MEMBERS CONSTRUCTORS ========*/
+
+void Ice::use(ICharacter& target)
+{
+    std::cout << "* heals "<< target.getName() << "'s wounds *" << std::endl;
+}
+
+AMateria* Ice::clone() const
+{
+    AMateria* tmp = new Ice;
+
+    tmp->setType(this->getType());
+    return (tmp);
+}
+/*===============================*/
 
 /*=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+*/
+
+
+
 
 /*=+=+=+=+=+=+=+=+=+=+=+=+ CURE =+=+=+=+=+=+=+=+=+=+=+=+*/
 
@@ -51,15 +72,26 @@ Cure::Cure(const Cure& rhs) : AMateria(rhs)
 {
     std::cout << "CURE copy constructor called" << std::endl;
 }
+Cure::~Cure() {}
 
 /*======== GETTERS ========*/
 std::string const & Cure::getType() const { return AMateria::getType(); }
 /*===============================*/
 
-// void Cure::use(ICharacter& target)
-// {
-    
-// }
+/*======== MEMBERS CONSTRUCTORS ========*/
 
+void Cure::use(ICharacter& target)
+{
+    std::cout << "* shoots an ice bolt at " << target.getName() << std::endl;
+}
+
+AMateria* Cure::clone() const
+{
+    AMateria* tmp = new Ice;
+
+    tmp->setType(this->getType());
+    return (tmp);
+}
+/*===============================*/
 
 /*=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+*/

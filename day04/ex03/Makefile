@@ -1,4 +1,4 @@
-SRCS = main.cpp IceAndCure.cpp AMateria.cpp 
+SRCS = main.cpp IceAndCure.cpp AMateria.cpp Characters.cpp
 
 NAME = animal
 

@@ -14,8 +14,11 @@ $$ | \_/ $$ |\$$$$$$$ |$$  /\$$\ \$$$$$$  |\$$$$$$  |
 
 #ifndef AMATERIA_HPP
 # define AMATERIA_HPP
+# include <iostream>
+# include <string>
 
-#include "Characters.hpp"
+
+class ICharacter;
 
 class AMateria
 {
@@ -31,14 +34,15 @@ class AMateria
         AMateria& operator=(const AMateria &);
 
     /*=== Destructors ===*/
-        ~AMateria();
+        virtual ~AMateria();
 
-    /*=== Getters ===*/
-        std::string const & getType() const;
+    /*=== Setters && Getters ===*/
+        std::string const & getType() const {return (_type);}
+        void setType(std::string const & type) {_type = type;}
         
     /*=== Member Functions ===*/
         virtual AMateria* clone() const = 0;
-        virtual void use(ICharacter& target);
+        virtual void use(ICharacter& target) {(void) target;};
 };
 
 #endif

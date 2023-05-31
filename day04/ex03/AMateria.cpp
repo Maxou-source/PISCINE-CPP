@@ -13,8 +13,6 @@ $$ | \_/ $$ |\$$$$$$$ |$$  /\$$\ \$$$$$$  |\$$$$$$  |
 */
 
 #include "AMateria.hpp"
-#include <iostream>
-#include <string>
 
 /*======== CONSTRUCTORS ========*/
 
@@ -44,19 +42,11 @@ AMateria& AMateria::operator=(const AMateria& rhs)
     this->_type = rhs._type;
     return (*this);
 }
-
+    
 /*++++++++*/
 
 /*===============================*/
 
-/*======== GETTERS ========*/
-
-std::string const & AMateria::getType() const
-{
-    return (_type);
-}
-
-/*===============================*/
 
 /*======== DESTRUCTORS ========*/
 
