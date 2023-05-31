@@ -32,12 +32,16 @@ class Ice : public AMateria
         /*=== Constructors ===*/
         Ice();
         Ice(const Ice&);
+
+        
         Ice& operator=(const Ice& rhs);
 
         /*=== Destructors ===*/
         ~Ice();
 
         /*=== From Base Class ===*/
+        void use(ICharacter& target);
+        std::string const & getType() const;
 };
 
 class Cure : public AMateria
@@ -52,4 +56,6 @@ class Cure : public AMateria
         ~Cure();
         
         /*=== From Base Class ===*/
+        void use(ICharacter& target);
+        std::string const & getType() const;
 };

@@ -17,6 +17,5 @@ $$ | \_/ $$ |\$$$$$$$ |$$  /\$$\ \$$$$$$  |\$$$$$$  |
 
 int main()
 {
-    IMateriaSource* src = new MateriaSource();
     std::cout << "ca compile" << std::endl;
 }

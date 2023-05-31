@@ -12,10 +12,9 @@ $$ | \_/ $$ |\$$$$$$$ |$$  /\$$\ \$$$$$$  |\$$$$$$  |
  * @ Create Time: 2023-05-29 01:10:22
  */
 
-#pragma once
+#ifndef AMATERIA_HPP
+# define AMATERIA_HPP
 
-#include <iostream>
-#include <string>
 #include "Characters.hpp"
 
 class AMateria
@@ -25,7 +24,7 @@ class AMateria
     public:
     /*=== Constructors ===*/
         AMateria();
-        AMateria(const &AMateria);
+        AMateria(const AMateria&);
 
         AMateria(std::string const & type);
 
@@ -42,3 +41,4 @@ class AMateria
         virtual void use(ICharacter& target);
 };
 
+#endif

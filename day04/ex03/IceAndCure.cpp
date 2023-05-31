@@ -18,21 +18,48 @@ $$ | \_/ $$ |\$$$$$$$ |$$  /\$$\ \$$$$$$  |\$$$$$$  |
 
 /*======== CONSTRUCTORS ========*/
 
-Ice::Ice(void)
+Ice::Ice(void)  
 {
-    std::cout << "Ice construcor called" << std::endl;
+    std::cout << "ICE construcor called" << std::endl;
     _type = "ice";
 }
 
+Ice::Ice(const Ice& rhs) : AMateria(rhs)
+{
+    std::cout << "ICE copy constructor called" << std::endl;
+}
+/*===============================*/
 
 /*======== GETTERS ========*/
+std::string const & Ice::getType() const { return AMateria::getType(); }
+/*===============================*/
 
-std::string const & AMateria::getType() const
+
+/*=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+*/
+
+/*=+=+=+=+=+=+=+=+=+=+=+=+ CURE =+=+=+=+=+=+=+=+=+=+=+=+*/
+
+/*======== CONSTRUCTORS ========*/
+
+Cure::Cure(void)
 {
-    return (_type);
+    std::cout << "Cure construcor called" << std::endl;
+    _type = "cure";
 }
 
+Cure::Cure(const Cure& rhs) : AMateria(rhs)
+{
+    std::cout << "CURE copy constructor called" << std::endl;
+}
+
+/*======== GETTERS ========*/
+std::string const & Cure::getType() const { return AMateria::getType(); }
 /*===============================*/
+
+// void Cure::use(ICharacter& target)
+// {
+    
+// }
 
 
 /*=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+*/
