@@ -41,7 +41,7 @@ std::string const & Ice::getType() const { return AMateria::getType(); }
 
 void Ice::use(ICharacter& target)
 {
-    std::cout << "* heals "<< target.getName() << "'s wounds *" << std::endl;
+    std::cout << "* shoots an ice bolt at " << target.getName() << std::endl;
 }
 
 AMateria* Ice::clone() const
@@ -54,9 +54,6 @@ AMateria* Ice::clone() const
 /*===============================*/
 
 /*=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+*/
-
-
-
 
 /*=+=+=+=+=+=+=+=+=+=+=+=+ CURE =+=+=+=+=+=+=+=+=+=+=+=+*/
 
@@ -82,7 +79,7 @@ std::string const & Cure::getType() const { return AMateria::getType(); }
 
 void Cure::use(ICharacter& target)
 {
-    std::cout << "* shoots an ice bolt at " << target.getName() << std::endl;
+    std::cout << "* heals "<< target.getName() << "'s wounds *" << std::endl;
 }
 
 AMateria* Cure::clone() const

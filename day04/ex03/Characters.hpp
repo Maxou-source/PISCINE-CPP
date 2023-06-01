@@ -20,6 +20,12 @@ $$ | \_/ $$ |\$$$$$$$ |$$  /\$$\ \$$$$$$  |\$$$$$$  |
 
 class AMateria;
 
+typedef struct s_garbage
+{
+    AMateria    *item;
+    s_garbage   *next;
+}   t_garbage;
+
 class ICharacter
 {
     public:
@@ -39,7 +45,7 @@ class Character : public ICharacter
         Character(const Character&);
 
     /*=== Destructors ===*/
-        ~Character() {};
+        ~Character();
 
     /*=== Getters and Setters ===*/
         std::string const & getName(void) const;
@@ -50,9 +56,11 @@ class Character : public ICharacter
         void    use(int idx, ICharacter& target);
 
     private:
-        AMateria    *inventory[4];
-        int         idx;
+        AMateria    *_inventory[4];
+        int         _idx;
         std::string _name;
+        t_garbage   *garbage;
+        t_garbage   *first;
 };
 
 #endif

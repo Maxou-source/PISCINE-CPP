@@ -14,10 +14,23 @@ $$ | \_/ $$ |\$$$$$$$ |$$  /\$$\ \$$$$$$  |\$$$$$$  |
 
 #include "AMateria.hpp"
 #include "IceAndCure.hpp"
+#include "Characters.hpp"
+
+/*
+destruction without any equipement
+*/
 
 int main()
 {
     AMateria *icee = new Ice;
 
-    (void) icee;    
+    Character Maxou("Maxou");
+
+    ICharacter *random = new Character("random");
+
+    Maxou.equip(icee);
+    // Maxou.unequip(0);
+    Maxou.use(0, *random);
+
+
 }

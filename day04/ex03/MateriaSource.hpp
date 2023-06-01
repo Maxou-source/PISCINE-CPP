@@ -8,9 +8,9 @@ $$ |\$  /$$ |$$  __$$ | $$  $$<  $$ |  $$ |$$ |  $$ |
 $$ | \_/ $$ |\$$$$$$$ |$$  /\$$\ \$$$$$$  |\$$$$$$  |
 \__|     \__| \_______|\__/  \__| \______/  \______/
 
- * @ Author: Maxou
- * @ Create Time: 1970-01-01 01:00:00
- */
+* @ Author: Maxou
+* @ Create Time: 1970-01-01 01:00:00
+*/
 
 #pragma once
 
@@ -27,18 +27,22 @@ class IMateriaSource
         virtual AMateria* createMateria(std::string const & type) = 0;
 };
 
-/*
-canonical:
--copy
--default
--assignement operator
--destructor
-*/
-
 class MateriaSource : public IMateriaSource
 {
     public:
-        ;
+    /*=== Constructors ===*/
+        MateriaSource();
+        MateriaSource(const MateriaSource& copy);
+
+        MateriaSource& operator=(const MateriaSource);
+
+    /*=== Destructors ===*/
+        ~MateriaSource();
+
+    /*=== Member Functions ===*/
+        void learnMateria(AMateria*);
+        AMateria* createMateria(std::string const & type);
     private:
-        AMateria *_data[];
+        AMateria *_data[4];
+        int _idx;
 };

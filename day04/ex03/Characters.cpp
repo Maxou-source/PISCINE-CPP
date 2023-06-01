@@ -13,48 +13,120 @@ $$ | \_/ $$ |\$$$$$$$ |$$  /\$$\ \$$$$$$  |\$$$$$$  |
  */
 
 #include "Characters.hpp"
-
-/*=+=+=+=+=+=+=+=+=+=+=+=+ I. CHARACTERS =+=+=+=+=+=+=+=+=+=+=+=+*/
-// ICharacter::~ICharacter(){/*std::cout<<"ICHARACTER destructor called"<<std::endl;*/}
-/*=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+*/
-
+#include "AMateria.hpp"
+#include "IceAndCure.hpp"
 
 /*=+=+=+=+=+=+=+=+=+=+=+=+ CHARACTERS =+=+=+=+=+=+=+=+=+=+=+=+*/
 
 /*======== CONSTRUCTORS ========*/
-Character::Character() {std::cout<<"CHARACTER constructor called"<<std::endl;}
-Character::Character(std::string name) : _name(name) {}
+Character::Character()
+{
+    std::cout<<"CHARACTER constructor called"<<std::endl;
+    for (int i = 0; i < 4; i++)
+        _inventory[i] = 0;
+    garbage = 0;
+}
+
+Character::Character(std::string name) : _idx(0), _name(name)
+{
+    std::cout<<"CHARACTER param constructor called"<<std::endl;
+    for (int i = 0; i < 4; i++)
+        _inventory[i] = 0;
+    garbage = 0;
+}
 
 Character::Character(const Character& copy)
 {
+    AMateria *tmp;
     this->_name = copy._name;
-    /*not done we need a profound copy*/
+    for (int i = 0; i < 4; i++)
+    {
+        if (copy._inventory[i])
+        {
+            if (copy._inventory[i]->getType() == "ice")
+                tmp = new Ice();
+            else
+                tmp = new Cure();
+            _inventory[i] = tmp;
+        }
+    }
 }
 
-std::string const & Character::getName(void) const
+Character::~Character(void)
 {
-    return _name;
+    for (int i = 0; i < 4; i++)
+    {
+        if (_inventory[i])
+            delete _inventory[i];
+    }
+    t_garbage *tmp;
+
+    while (first)
+    {
+        tmp = first;
+        first = first->next;
+        delete tmp->item;
+    }
 }
 
 /*======== MEMBERS FUNCTIONS ========*/
 
 void Character::equip(AMateria* m)
 {
-    (void) m;
+    if (_idx > 3)
+    {
+        std::cout << "do nothing" << std::endl;
+        return ;
+    }
+    _inventory[_idx++] = m;
 }
 
 void Character::unequip(int idx)
 {
-    (void) idx;
+    if (!(idx >= 0 && idx <= 3))
+    {
+        std::cout << "Not a correct index !!" << std::endl;
+        return ;
+    }
+    else if (_inventory[_idx] == 0)
+    {
+        std::cout << "Nothing there !!" << std::endl;
+        return ;
+    }
+    else
+    {
+        t_garbage *tmp;
+        tmp = new t_garbage;
+        tmp->item = _inventory[idx];
+        tmp->next = 0;
+
+        if (!garbage)
+        {
+            garbage = tmp;
+            first = tmp;
+        }
+        else
+            garbage->next = tmp;
+
+        _inventory[idx] = 0;
+    }
 }
 void    Character::use(int idx, ICharacter& target)
 {
-    (void) target;
-    (void) inventory;
-    (void) idx;
-    (void) this->idx;
+    if (!(idx >= 0 && idx <= 3) || !_inventory[idx])
+    {
+        std::cout << "Nothing to do" << std::endl;
+        return ;
+    }
+    _inventory[idx]->use(target);
 }
+/*===============================*/
 
+/*======== GETTERS ========*/
+std::string const & Character::getName(void) const
+{
+    return _name;
+}
 /*===============================*/
 
 /*=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+*/

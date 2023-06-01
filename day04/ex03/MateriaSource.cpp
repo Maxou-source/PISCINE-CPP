@@ -13,26 +13,57 @@ $$ | \_/ $$ |\$$$$$$$ |$$  /\$$\ \$$$$$$  |\$$$$$$  |
  */
 
 #include "MateriaSource.hpp"
+#include "AMateria.hpp"
+#include "IceAndCure.hpp"
 
-/*=+=+=+=+=+=+=+=+=+=+=+=+ INTERFACE =+=+=+=+=+=+=+=+=+=+=+=+*/
+/*=+=+=+=+=+=+=+=+=+=+=+=+ MATERIA SOURCE =+=+=+=+=+=+=+=+=+=+=+=+*/
 
-// IMateriaSource::IMateriaSource(void)
-// {
-//     std::cout << "Interface Materia Source constructor called" << std::endl;
-//     _data = NULL;
-// }
+MateriaSource::MateriaSource() : _idx(0)
+{
+    for (int i = 0; i < 4; i++)
+    {
+        _data[i] = 0;
+    }
+}
 
-// IMateriaSource::IMateriaSource(const IMateriaSource& rhs)
-// {
-//     std::cout << "Interface Materia Source copy constructor called" << std::endl;
-// }
+MateriaSource::MateriaSource(const MateriaSource& copy)
+{
+    AMateria* tmp;
+    for (int i = 0; i < 4; i++)
+    {
+        if (copy._data[i])
+        {
+            if (copy._data[i]->getType() == "ice")
+                tmp = new Ice();
+            else
+                tmp = new Cure();
+            _data[i] = tmp;
+        }
+    }
+}
 
-// /*=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+*/
+AMateria* MateriaSource::createMateria(std::string const & type)
+{
+    if (type == "ice")
+        return (new Ice());
+    else if (type == "cure")
+        return (new Cure());
+    return 0;
+}
 
+void MateriaSource::learnMateria(AMateria *tmp)
+{
+    AMateria* tmp;
 
-// /*=+=+=+=+=+=+=+=+=+=+=+=+ MATERIA SOURCE =+=+=+=+=+=+=+=+=+=+=+=+*/
+    if (type == "ice")
+        tmp = new Ice();
+    else if (type == "cure")
+        tmp = new Cure();
+    else
+        return ;
 
-// MateriaSource::MateriaSource()
+    _data[_idx++] = tmp;
+}
 
 
 /*=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+*/
