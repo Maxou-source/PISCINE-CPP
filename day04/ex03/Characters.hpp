@@ -44,6 +44,7 @@ class Character : public ICharacter
         Character(std::string name);
         Character(const Character&);
 
+        Character& operator=(const Character& rhs);
     /*=== Destructors ===*/
         ~Character();
 

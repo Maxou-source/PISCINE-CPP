@@ -18,6 +18,8 @@ $$ | \_/ $$ |\$$$$$$$ |$$  /\$$\ \$$$$$$  |\$$$$$$  |
 
 /*=+=+=+=+=+=+=+=+=+=+=+=+ MATERIA SOURCE =+=+=+=+=+=+=+=+=+=+=+=+*/
 
+/*======== CONSTRUCTORS ========*/
+
 MateriaSource::MateriaSource() : _idx(0)
 {
     for (int i = 0; i < 4; i++)
@@ -28,20 +30,20 @@ MateriaSource::MateriaSource() : _idx(0)
 
 MateriaSource::MateriaSource(const MateriaSource& copy)
 {
-    AMateria* tmp;
     for (int i = 0; i < 4; i++)
     {
         if (copy._data[i])
         {
-            if (copy._data[i]->getType() == "ice")
-                tmp = new Ice();
-            else
-                tmp = new Cure();
-            _data[i] = tmp;
+            _data[i] = copy._data[i]->clone();
         }
     }
 }
 
+MateriaSource::~MateriaSource(){};
+
+/*===============================*/
+
+/*======== MEMBERS FUNCTIONS ========*/
 AMateria* MateriaSource::createMateria(std::string const & type)
 {
     if (type == "ice")
@@ -53,17 +55,14 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 
 void MateriaSource::learnMateria(AMateria *tmp)
 {
-    AMateria* tmp;
-
-    if (type == "ice")
-        tmp = new Ice();
-    else if (type == "cure")
-        tmp = new Cure();
-    else
+    if (_idx > 4)
+    {
+        std::cout << "Do nothing !!" << std::endl;
         return ;
-
-    _data[_idx++] = tmp;
+    }
+    _data[_idx++] = tmp->clone();
 }
+/*===============================*/
 
 
 /*=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+*/

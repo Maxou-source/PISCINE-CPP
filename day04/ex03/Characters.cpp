@@ -34,21 +34,14 @@ Character::Character(std::string name) : _idx(0), _name(name)
         _inventory[i] = 0;
     garbage = 0;
 }
-
+/*===USE CLONE===*/
 Character::Character(const Character& copy)
 {
-    AMateria *tmp;
     this->_name = copy._name;
     for (int i = 0; i < 4; i++)
     {
         if (copy._inventory[i])
-        {
-            if (copy._inventory[i]->getType() == "ice")
-                tmp = new Ice();
-            else
-                tmp = new Cure();
-            _inventory[i] = tmp;
-        }
+            _inventory[i] = copy._inventory[i]->clone();
     }
 }
 
@@ -68,6 +61,21 @@ Character::~Character(void)
         delete tmp->item;
     }
 }
+
+/*++++ Overload = operator ++++*/
+Character& Character::operator=(const Character& rhs)
+{
+    this->_name = rhs.getName();
+    this->_name = rhs._idx;
+    for (int i = 0; i < 4; i++)
+    {
+        this->_inventory[i] = rhs._inventory[i];
+    }
+    return (*this); 
+}
+/*++++++++*/
+
+/*===============================*/
 
 /*======== MEMBERS FUNCTIONS ========*/
 
